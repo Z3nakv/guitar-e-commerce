@@ -1,0 +1,41 @@
+import { useEffect } from "react";
+import { useContext } from "react";
+import { mainFetchContext } from "../Context/MainFetchContext";
+
+export const useMainFetch = () => {
+
+    const { mainData, count, setMainData, setLoading, loading, setCount } = useContext( mainFetchContext );
+
+    const fetchMainData = async () => {
+      
+        // setLoading(true); 
+        try {
+          const response = await fetch(`http://localhost:4000/api/store/main?limit=3&skip=${count * 3}`);
+          if(!response.ok) throw new Error('Network response was not ok');
+          const result = await response.json();
+          
+          if(result && result.mainPageData && result.mainPageData.length){
+            setMainData(prevState => [...prevState, ...result.mainPageData]);
+          }else{
+            console.error('Invalid response structure: ', result);
+          }
+        } catch (error) {
+          console.log('Error fetching main data: ', error);
+        }finally {
+          setLoading(false)
+        }
+      }
+
+      useEffect(() => {
+        if (count < 4 ) {
+          fetchMainData();
+        }
+      },[count])
+
+      return {
+        count,
+        mainData,
+        loading,
+        setCount
+      }
+}

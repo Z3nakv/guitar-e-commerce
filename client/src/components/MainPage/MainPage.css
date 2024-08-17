@@ -1,0 +1,48 @@
+.main-container {
+    display: flex;
+    flex-direction: row-reverse;
+
+    & h4 {
+        text-align: center;
+    }
+}
+
+.button-container{
+    width:100%; 
+    display:flex; 
+    justify-content:center;
+    margin: 1rem auto;
+
+    & :hover {
+        border: 1px solid var(--bs-body-color) !important;
+    }
+
+    & button {
+        border-radius: 1rem;
+        background: orange;
+    }
+}
+
+.menu-bar {
+    position:fixed;
+    bottom:3vh;
+    right:3vw;
+    z-index:10;
+    display: none;
+    cursor: pointer;
+    font-size: 4rem;
+  }
+
+  @media (max-width: 768px) { 
+    .menu-bar {
+        display: block;
+    }
+    .check {
+        display: block;
+        transform: translateX(0);
+    }
+}
+
+.toggle_aside_button {
+    pointer-events: none;
+}

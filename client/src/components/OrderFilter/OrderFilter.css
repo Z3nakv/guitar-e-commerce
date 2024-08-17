@@ -1,0 +1,19 @@
+.orderFilter-form {
+    width:100%;
+    /* background:#fff; */
+    padding:1.5rem;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    gap:5rem;
+    /* margin-top:1rem; */
+    position:sticky;
+    top:0;
+    -webkit-box-shadow: -1px 8px 15px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 8px 15px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 8px 15px -10px rgba(0,0,0,0.75);
+
+    & div input {
+        cursor: pointer;
+    }
+  }
