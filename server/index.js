@@ -10,7 +10,11 @@ import { fileURLToPath } from 'url';
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5000' || 'https://guitar-e-commerce.onrender.com',
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization'
+}));
 
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
