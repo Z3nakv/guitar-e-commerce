@@ -11,10 +11,14 @@ import { fileURLToPath } from 'url';
 const port = process.env.PORT || 4000;
 const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/";
 
+const allowedOrigin = process.env.NODE_ENV === 'production' 
+    ? 'https://guitar-e-commerce.onrender.com' 
+    : `http://localhost:${port}`;
+
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: `http://localhost:${port}` || 'https://guitar-e-commerce.onrender.com',
+    origin: allowedOrigin,
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type, Authorization'
 }));
