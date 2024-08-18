@@ -31,8 +31,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join( _dirname, "dist/index.html"))
 });
 
-
-
 app.get('/', (req, res) => {
     res.json({ response: 'GET'})
 });
@@ -40,6 +38,8 @@ app.get('/', (req, res) => {
 mongoose.connect(uri)
     .then(() => {
         console.log('databse connected');
+        console.log(FRONTEND_URL);
+        console.log('puerto:', PORT);
         app.listen(PORT, () => {
             console.log(`server succed on http://localhost:${PORT}/`);
         });
