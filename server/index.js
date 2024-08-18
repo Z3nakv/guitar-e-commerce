@@ -9,7 +9,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const port = process.env.PORT || 4000;
-const uri = process.env.MONGODB_URL;
+const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/";
 
 const app = express();
 app.use(express.json());
