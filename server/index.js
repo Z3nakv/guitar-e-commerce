@@ -17,16 +17,12 @@ const allowedOrigin = process.env.NODE_ENV === 'production'
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: FRONTEND_URL || 'https://guitar-e-commerce.onrender.com',
-    methods: 'GET, POST, PUT, DELETE',
-    allowedHeaders: 'Content-Type, Authorization'
-}));
+app.use(cors());
 
 const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
-app.use(express.static(path.join(_dirname, "dist")));
 
+app.use(express.static(path.join(_dirname, "dist")));
 
 app.use('/api/store', guitarRouter);
 app.use('/api/store/main', guitarMainRouter);
