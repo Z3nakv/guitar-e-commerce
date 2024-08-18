@@ -1,15 +1,18 @@
 import { useEffect, useMemo, useContext } from "react";
 import toast from 'react-hot-toast';
 import { cartContext } from "../Context/CartContext";
+// import 'dotenv/config';
 
 export const useCart = () => {
 
   const { cart, setCart } = useContext( cartContext )
-  
+
+  const url = import.meta.env.VITE_API_URL;
+
   const fetchCart = async () => {
     
     try {
-      const response = await fetch('http://localhost:10000/api/store');
+      const response = await fetch(`${url}/api/store`);
       if(!response.ok) throw new Error('Network response was not ok');
       const result = await response.json();
       if(result && result.cartData && result.cartData.length){

@@ -18,9 +18,9 @@ const allowedOrigin = process.env.NODE_ENV === 'production'
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: allowedOrigin,
-    methods: 'GET, POST, PUT, DELETE',
-    allowedHeaders: 'Content-Type, Authorization'
+    // origin: `http://localhost:${port}` || 'https://guitar-e-commerce.onrender.com',
+    // methods: 'GET, POST, PUT, DELETE',
+    // allowedHeaders: 'Content-Type, Authorization'
 }));
 
 const _filename = fileURLToPath(import.meta.url);
@@ -41,12 +41,7 @@ app.get('/', (req, res) => {
     res.json({ response: 'GET'})
 });
 
-const options = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}
-
-mongoose.connect(uri, options)
+mongoose.connect(uri)
     .then(() => {
         console.log('databse connected');
         app.listen(port, () => {

@@ -75,13 +75,7 @@ const CartMainPage = () => {
                         onClick={() => removeFromCart(guitar._id)}
                       >
                         <FaTrashAlt
-                          style={{ fontSize: "1.5rem", color: "black" }}
-                          onMouseEnter={({ target }) =>
-                            (target.style.opacity = ".5")
-                          }
-                          onMouseLeave={({ target }) =>
-                            (target.style.opacity = "1")
-                          }
+                        className="trash_icon"
                         />
                       </button>
                     </td>
