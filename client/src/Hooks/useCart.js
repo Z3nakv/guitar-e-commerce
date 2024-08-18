@@ -9,7 +9,7 @@ export const useCart = () => {
   const fetchCart = async () => {
     
     try {
-      const response = await fetch('http://localhost:4000/api/store');
+      const response = await fetch('http://localhost:10000/api/store');
       if(!response.ok) throw new Error('Network response was not ok');
       const result = await response.json();
       if(result && result.cartData && result.cartData.length){

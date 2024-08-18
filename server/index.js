@@ -9,7 +9,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const port = process.env.PORT || 4000;
-const uri = process.env.MONGODB_URI || "mongodb://localhost:27017/";
+const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/";
 
 const allowedOrigin = process.env.NODE_ENV === 'production' 
     ? 'https://guitar-e-commerce.onrender.com' 
@@ -41,7 +41,12 @@ app.get('/', (req, res) => {
     res.json({ response: 'GET'})
 });
 
-mongoose.connect(uri)
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+
+mongoose.connect(uri, options)
     .then(() => {
         console.log('databse connected');
         app.listen(port, () => {
