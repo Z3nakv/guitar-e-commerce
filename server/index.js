@@ -41,7 +41,7 @@ mongoose.connect(uri)
         console.log(FRONTEND_URL);
         console.log('puerto:', PORT);
         app.listen(PORT, () => {
-            console.log(`server succed on http://localhost:${PORT}/`);
+            console.log(`server succed on ${FRONTEND_URL}`);
         });
     })
     .catch(err => console.log(err));
