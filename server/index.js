@@ -8,10 +8,13 @@ import guitarMainRouter from './routes/guitarMainPageRoute.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+const port = process.env.PORT || 4000;
+const uri = process.env.MONGODB_URL;
+
 const app = express();
 app.use(express.json());
 app.use(cors({
-    origin: 'http://localhost:5000' || 'https://guitar-e-commerce.onrender.com',
+    origin: `http://localhost:${port}` || 'https://guitar-e-commerce.onrender.com',
     methods: 'GET, POST, PUT, DELETE',
     allowedHeaders: 'Content-Type, Authorization'
 }));
@@ -20,15 +23,15 @@ const _filename = fileURLToPath(import.meta.url);
 const _dirname = path.dirname(_filename);
 app.use(express.static(path.join(_dirname, "dist")));
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join( _dirname, "dist/index.html"))
-});
 
 app.use('/api/store', guitarRouter);
 app.use('/api/store/main', guitarMainRouter);
 
-const port = process.env.PORT || 4000;
-const uri = process.env.MONGODB_URL;
+app.get("/", (req, res) => {
+    res.sendFile(path.join( _dirname, "dist/index.html"))
+});
+
+
 
 app.get('/', (req, res) => {
     res.json({ response: 'GET'})
