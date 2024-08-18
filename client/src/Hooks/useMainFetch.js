@@ -13,7 +13,7 @@ export const useMainFetch = () => {
       
         // setLoading(true); 
         try {
-          const response = await fetch(`https://guitar-e-commerce.onrender.com/api/store/main?limit=3&skip=${count * 3}`);
+          const response = await fetch(`${url}/api/store/main?limit=3&skip=${count * 3}`);
           if(!response.ok) throw new Error('Network response was not ok');
           const result = await response.json();
           
