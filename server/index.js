@@ -4,23 +4,23 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import guitarRouter from './routes/guitarCartRoute.js';
 import guitarMainRouter from './routes/guitarMainPageRoute.js';
+import { FRONTEND_URL, PORT } from './config.js'
 
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const port = process.env.PORT || 4000;
 const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/";
 
 const allowedOrigin = process.env.NODE_ENV === 'production' 
     ? 'https://guitar-e-commerce.onrender.com' 
-    : `http://localhost:${port}`;
+    : `http://localhost:${PORT}`;
 
 const app = express();
 app.use(express.json());
 app.use(cors({
-    // origin: `http://localhost:${port}` || 'https://guitar-e-commerce.onrender.com',
-    // methods: 'GET, POST, PUT, DELETE',
-    // allowedHeaders: 'Content-Type, Authorization'
+    origin: FRONTEND_URL || 'https://guitar-e-commerce.onrender.com',
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization'
 }));
 
 const _filename = fileURLToPath(import.meta.url);
@@ -44,8 +44,8 @@ app.get('/', (req, res) => {
 mongoose.connect(uri)
     .then(() => {
         console.log('databse connected');
-        app.listen(port, () => {
-            console.log(`server succed on http://localhost:${port}/`);
+        app.listen(PORT, () => {
+            console.log(`server succed on http://localhost:${PORT}/`);
         });
     })
     .catch(err => console.log(err));

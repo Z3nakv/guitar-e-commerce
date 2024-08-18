@@ -5,7 +5,7 @@ import { mainFetchContext } from "../Context/MainFetchContext";
 export const useMainFetch = () => {
 
     const { mainData, count, setMainData, setLoading, loading, setCount } = useContext( mainFetchContext );
-    const url = import.meta.env.VITE_API_URL;
+    const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
 
     const fetchMainData = async () => {
       
