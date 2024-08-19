@@ -40,6 +40,7 @@ mongoose.connect(uri)
         console.log('databse connected');
         console.log(FRONTEND_URL);
         console.log('puerto:', PORT);
+        console.log(process.env.NODE_ENV);
         app.listen(PORT, () => {
             console.log(`server succed on ${FRONTEND_URL}`);
         });
