@@ -6,15 +6,19 @@ import { mainFetchContext } from "../Context/MainFetchContext";
 export const useMainFetch = () => {
 
     const { mainData, count, setMainData, setLoading, loading, setCount } = useContext( mainFetchContext );
-    const url = import.meta.env.VITE_API_URL;
+    const url = import.meta.env.MODE === 'production' ? import.meta.env.VITE_API_URL : 'http://localhost:4000';
     // console.log(import.meta.env.VITE_API_URL);
     
     const fetchMainData = async () => {
       console.log(url);
+      console.log(import.meta.env.PORT);
+      console.log(import.meta.env.MODE);
+      console.log(import.meta.env.BASE_URL);
+      console.log(import.meta.env.PROD);
       
         // setLoading(true); 
         try {
-          const response = await fetch(`${url}/api/store/main?limit=3&skip=${count * 3}`);
+          const response = await fetch(`$http://localhost:10000/api/store/main?limit=3&skip=${count * 3}`);
           if(!response.ok) throw new Error('Network response was not ok');
           const result = await response.json();
           
