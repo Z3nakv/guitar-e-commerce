@@ -27,7 +27,7 @@ app.use(express.static(path.join(_dirname, "dist")));
 app.use('/api/store', guitarRouter);
 app.use('/api/store/main', guitarMainRouter);
 
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.join( _dirname, "dist/index.html"))
 });
 
