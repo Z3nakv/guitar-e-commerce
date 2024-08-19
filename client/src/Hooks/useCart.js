@@ -7,7 +7,7 @@ export const useCart = () => {
 
   const { cart, setCart } = useContext( cartContext )
 
-  const url = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  const url = import.meta.env.VITE_API_URL || "https://localhost:4000";
 
   const fetchCart = async () => {
     
