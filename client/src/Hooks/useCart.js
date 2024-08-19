@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useContext } from "react";
 import toast from 'react-hot-toast';
 import { cartContext } from "../Context/CartContext";
-import 'dotenv/config';
+// import 'dotenv/config';
 
 export const useCart = () => {
 
