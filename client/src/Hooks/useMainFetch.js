@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useContext } from "react";
 import { mainFetchContext } from "../Context/MainFetchContext";
+import 'dotenv/config';
 
 export const useMainFetch = () => {
 
